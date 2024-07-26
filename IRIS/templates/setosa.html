@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Setosa Flower</title>
+    <link rel="icon" href="/static/bg.jpg" type="image/icon type" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='css/setosa.css')}}"
+    />
+  </head>
+  <body>
+    <div class="glass-container">
+      <div class="icard">
+        <h2>OUTPUT: Setosa Flower</h2>
+        <p class="description">Iris setosa</p>
+        <p class="description">
+          Iris setosa, also known as the bristle-pointed iris, is a species of
+          flowering plant in the genus Iris. Here are some key details about it:
+        </p>
+        <p class="description">
+          Appearance: Iris setosa has tall, branching stems with mid-green,
+          grass-like leaves. The leaves are lanceolate (sword-shaped) and can
+          measure 30 to 60 cm (12 to 24 in) long by 0.8 to 2.5 cm wide. The
+          large flowers, which bloom between June and July, are 5to8 cm (3to6
+          in) across and come in shades of blue, violet, purple-blue, and
+          lavender. Occasionally, there are pink or white forms.
+        </p>
+        <p class="description">
+          Rhizomes: The shallowly rooted, large, branching rhizomes spread over
+          time to create large clumps.
+        </p>
+        <p class="description">
+          Petals and Sepals: Like other irises, Iris setosa has 3 pairs of
+          petals. The sepals (outer petals) are deeply veined dark purple with a
+          yellow-white signal (center), while the petals are very reduced in
+          size, not exceeding the base of the sepals
+        </p>
+        <button id="download-btn">Download Description</button>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("download-btn")
+        .addEventListener("click", function () {
+          var descriptions = document.querySelectorAll(".description");
+          var descriptionText = "";
+          descriptions.forEach(function (description) {
+            descriptionText += description.textContent + "\n";
+          });
+          var name = "Setosa Flower";
+          var text = `${name}\n${descriptionText}`;
+          var blob = new Blob([text], { type: "text/plain" });
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement("a");
+          a.href = url;
+          a.download = `${name}.txt`;
+          a.click();
+        });
+    </script>
+  </body>
+</html>

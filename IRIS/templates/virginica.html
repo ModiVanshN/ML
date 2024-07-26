@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virginica Flower</title>
+    <link rel="icon" href="/static/bg.jpg" type="image/icon type" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='css/virginica.css')}}"
+    />
+  </head>
+  <body>
+    <div class="glass-container">
+      <div class="icard">
+        <h2>OUTPUT: Virginica Flower</h2>
+        <p class="description">Iris Virginica</p>
+        <p class="description">
+          Certainly! Let us explore the fascinating world of Iris virginica,
+          commonly known as Virginia blueflag or Southern blue flag.
+        </p>
+        <p class="description">
+          The flowers of Iris virginica are bluish-purple, with a yellow and
+          white center
+        </p>
+        <p class="description">
+          Both species grow in wetland conditions and have similar flowers
+        </p>
+        <p class="description">
+          Iris virginica thrives in wetland conditions and is typically found in
+          coastal plains from Virginia to Louisiana.
+        </p>
+        <button id="download-btn">Download Description</button>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("download-btn")
+        .addEventListener("click", function () {
+          var descriptions = document.querySelectorAll(".description");
+          var descriptionText = "";
+          descriptions.forEach(function (description) {
+            descriptionText += description.textContent + "\n";
+          });
+          var name = "Virginica Flower";
+          var text = `${name}\n${descriptionText}`;
+          var blob = new Blob([text], { type: "text/plain" });
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement("a");
+          a.href = url;
+          a.download = `${name}.txt`;
+          a.click();
+        });
+    </script>
+  </body>
+</html>

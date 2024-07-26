@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Versicolor Flower</title>
+    <link rel="icon" href="/static/bg.jpg" type="image/icon type" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='css/versicolor.css')}}"
+    />
+  </head>
+  <body>
+    <div class="glass-container">
+      <div class="icard">
+        <h2>OUTPUT: Versicolor Flower</h2>
+        <p class="description">Iris Versicolor</p>
+        <p class="description">
+          Iris versicolor, commonly known as the blue flag, harlequin blueflag,
+          larger blue flag, northern blue flag, and poison flag, goes by various
+          names. In Britain and Ireland, it is referred to as the purple iris.
+          Here are some key details about this beautiful flowering plant:
+        </p>
+        <p class="description">
+          Color: The attractive flowers range from deep blue to purple, and
+          rarely white.
+        </p>
+        <p class="description">
+          Habitat: It thrives in marshes, meadows, fields, and along the shores
+          of rivers or lakes.
+        </p>
+        <p class="description">
+          Medicinal Use: Native Americans used it externally for burns, wounds,
+          swellings, and sores, and internally for liver and kidney disease
+        </p>
+        <button id="download-btn">Download Description</button>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("download-btn")
+        .addEventListener("click", function () {
+          var descriptions = document.querySelectorAll(".description");
+          var descriptionText = "";
+          descriptions.forEach(function (description) {
+            descriptionText += description.textContent + "\n";
+          });
+          var name = "Versicolor Flower";
+          var text = `${name}\n${descriptionText}`;
+          var blob = new Blob([text], { type: "text/plain" });
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement("a");
+          a.href = url;
+          a.download = `${name}.txt`;
+          a.click();
+        });
+    </script>
+  </body>
+</html>
