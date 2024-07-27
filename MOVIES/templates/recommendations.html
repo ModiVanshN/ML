@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Recommendations</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+    <h1>Movie Recommendations</h1>
+   
+    <ul>
+        {% for movie in recommended_movies %}
+            <li>{{ movie }}</li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
